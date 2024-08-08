@@ -27,8 +27,7 @@ app.get("/download-update", (req, res) => {
   );
 
   const archive = archiver("zip", {
-    zlib: { level: 9 },
-    l,
+    zlib: { level: 9 } // Sets the compression level
   });
 
   archive.on("error", (err) => {

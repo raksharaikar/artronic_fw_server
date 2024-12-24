@@ -55,7 +55,7 @@ app.get("/check-update", (req, res) => {
   if (isNewerVersion(latestVersion, version)) {
     res.json({ updateAvailable: true, latestVersion });
   } else {
-    res.json({ updateAvailable: false });
+    res.json({ updateAvailable: false, latestVersion});
   }
 });
 

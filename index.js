@@ -5,6 +5,8 @@ const fs = require("fs");
 const archiver = require("archiver");
 const PORT = process.env.PORT || 3000;
 
+//added comment
+
 function getLatestVersion() {
   const folderPath = path.join(__dirname, "artronic_firmware");
 

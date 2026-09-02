@@ -156,6 +156,19 @@ app.get("/download-old-firmware", (req, res) => {
   archive.finalize();
 });
 
+app.get("/latest-fw-version", (req, res) => {
+  const latestVersion = getLatestVersion();
+
+  if (!latestVersion) {
+    return res.status(500).json({
+      error: "Unable to determine the latest firmware version."
+    });
+  }
+
+  res.json({
+    latestVersion
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

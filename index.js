@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const archiver = require("archiver");
 const PORT = process.env.PORT || 3000;
-
+const APP_VERSION = "1.0.1";
 //added comment
 
 function getLatestVersion() {
@@ -169,6 +169,32 @@ app.get("/latest-fw-version", (req, res) => {
     latestVersion
   });
 });
+
+// Check app version
+app.get("/check-app-version", (req, res) => {
+  const { version } = req.query;
+
+  if (!version) {
+    return res.status(400).json({
+      error: "Please provide the current app version."
+    });
+  }
+
+  const latestVersion = APP_VERSION;
+
+  if (isNewerVersion(latestVersion, version)) {
+    return res.json({
+      updateAvailable: true,
+      latestVersion
+    });
+  }
+
+  res.json({
+    updateAvailable: false,
+    latestVersion
+  });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

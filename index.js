@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const archiver = require("archiver");
 const PORT = process.env.PORT || 3000;
-const APP_VERSION = "1.0.1";
+const APP_VERSION = "4.0.21";
 //added comment
 
 function getLatestVersion() {
